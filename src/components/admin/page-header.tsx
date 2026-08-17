@@ -1,0 +1,1 @@
+export function AdminHeader({eyebrow,title,description}:{eyebrow:string;title:string;description?:string}){return <header className="mb-10"><p className="eyebrow text-navy">{eyebrow}</p><h1 className="mt-3 font-editorial text-5xl text-navy">{title}</h1>{description&&<p className="mt-3 max-w-2xl text-sm leading-6 text-ink/55">{description}</p>}</header>}

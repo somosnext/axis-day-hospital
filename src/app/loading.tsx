@@ -1,0 +1,1 @@
+import{Skeleton}from"@/components/ui/primitives";export default function Loading(){return <main className="min-h-screen bg-off-white"><Skeleton className="h-[90svh] w-full"/><div className="container-axis py-20"><Skeleton className="h-8 w-40"/><Skeleton className="mt-8 h-24 max-w-3xl"/></div></main>}

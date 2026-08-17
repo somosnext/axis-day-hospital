@@ -1,0 +1,1 @@
+import{AdminShell}from"@/components/admin/shell";import{requireStaff}from"@/lib/auth";export default async function Layout({children}:{children:React.ReactNode}){const staff=await requireStaff();return <AdminShell staff={staff}>{children}</AdminShell>}
