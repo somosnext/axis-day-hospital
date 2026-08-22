@@ -1,6 +1,6 @@
-insert into public.site_settings(business_name,slogan,address,opening_hours,whatsapp_message,seo_title,seo_description)
-select 'Axis Day Hospital','Sua cirurgia. Nossa estrutura.','Avenida Rubem Berta, 850 — Conjunto 1404 — Indianápolis — São Paulo/SP','Segunda a sexta-feira, das 07:00 às 19:00','Olá. Sou médico(a) e gostaria de conhecer as condições para realizar procedimentos no Axis Day Hospital.','Axis Day Hospital | Estrutura moderna para médicos em São Paulo','Hospital para procedimentos invasivos de curta permanência em São Paulo, com estrutura moderna para pacientes, médicos e equipes.'
-where not exists(select 1 from public.site_settings);
+update public.site_settings
+set seo_description = 'Day Hospital em São Paulo para procedimentos invasivos de curta permanência, com estrutura para médicos, equipes e pacientes.',
+    updated_at = now();
 
 insert into public.page_sections(section_key,eyebrow,title,description,cta_label,cta_url,active,sort_order,content) values
 ('hero','Day Hospital · São Paulo','Sua cirurgia. Nossa estrutura.','Um Day Hospital para procedimentos de curta permanência, onde tecnologia, acolhimento e segurança caminham juntos.','Conheça o Axis','#o-axis',true,10,'{}'),
@@ -11,9 +11,23 @@ insert into public.page_sections(section_key,eyebrow,title,description,cta_label
 ('structure','Conheça o Axis','Estrutura pensada nos detalhes.','Ambientes e salas cirúrgicas preparados com infraestrutura e equipamentos para integrar segurança, tecnologia e acolhimento durante a experiência de médicos, equipes e pacientes.',null,null,true,42,'{}'),
 ('education','Educação e atualização','Tecnologia a serviço do cuidado e do ensino.','Uma câmera 4K integrada ao foco cirúrgico permite filmar e transmitir procedimentos ao vivo em alta definição. O recurso amplia as possibilidades de aulas, treinamentos e cursos para atualização profissional e troca de conhecimento.',null,null,true,45,'{}'),
 ('editorial_cta','Próximo passo','Tecnologia que inspira confiança. Cuidado que faz a diferença.','Conheça uma estrutura preparada para receber você, sua equipe e seus pacientes — antes, durante e após o procedimento.','Fale conosco e faça seu credenciamento','#contato',true,50,'{}')
-on conflict(section_key) do update set eyebrow=excluded.eyebrow,title=excluded.title,description=excluded.description,content=excluded.content,cta_label=excluded.cta_label,cta_url=excluded.cta_url,active=excluded.active,sort_order=excluded.sort_order,updated_at=now();
+on conflict(section_key) do update set
+  eyebrow=excluded.eyebrow,
+  title=excluded.title,
+  description=excluded.description,
+  content=excluded.content,
+  cta_label=excluded.cta_label,
+  cta_url=excluded.cta_url,
+  active=excluded.active,
+  sort_order=excluded.sort_order,
+  updated_at=now();
 
-insert into public.differentials(title,description,active,sort_order) values
-('Segurança','Protocolos assistenciais conduzidos em ambiente licenciado pela Vigilância Sanitária.',true,10),
-('Tecnologia','Salas cirúrgicas equipadas e recursos integrados para apoiar o cuidado e a atuação das equipes.',true,20),
-('Suporte à equipe médica','Estrutura organizada para receber médicos, equipes e pacientes ao longo do procedimento.',true,30);
+update public.differentials
+set description = case title
+  when 'Segurança' then 'Protocolos assistenciais conduzidos em ambiente licenciado pela Vigilância Sanitária.'
+  when 'Tecnologia' then 'Salas cirúrgicas equipadas e recursos integrados para apoiar o cuidado e a atuação das equipes.'
+  when 'Suporte à equipe médica' then 'Estrutura organizada para receber médicos, equipes e pacientes ao longo do procedimento.'
+  else description
+end,
+updated_at = now()
+where title in ('Segurança','Tecnologia','Suporte à equipe médica');

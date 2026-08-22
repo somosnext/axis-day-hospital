@@ -27,6 +27,18 @@ function getSafeGoogleMapsEmbed(value: string | null | undefined) {
   }
 }
 
+type SectionItem = { title: string; description: string };
+
+function getSectionItems(content: Record<string, unknown> | null | undefined, fallback: SectionItem[]) {
+  if (!Array.isArray(content?.items)) return fallback;
+  const items = content.items.filter((item): item is SectionItem => {
+    if (!item || typeof item !== "object") return false;
+    const candidate = item as Record<string, unknown>;
+    return typeof candidate.title === "string" && typeof candidate.description === "string";
+  });
+  return items.length ? items : fallback;
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const { settings } = await getPublicData();
   const title = settings.seo_title || "Axis Day Hospital | Estrutura cirúrgica para médicos em São Paulo";
@@ -48,6 +60,7 @@ export default async function Home() {
   const process = sections.process;
   const experience = sections.experience;
   const education = sections.education;
+  const structure = sections.structure;
   const editorialCta = sections.editorial_cta;
   const whatsapp = settings.whatsapp
     ? `https://wa.me/${settings.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(settings.whatsapp_message || "Olá. Sou médico(a) e gostaria de conhecer as condições para realizar procedimentos no Axis Day Hospital.")}`
@@ -55,6 +68,16 @@ export default async function Home() {
   const processSteps = Array.isArray(process?.content?.steps)
     ? process.content.steps.filter((step): step is string => typeof step === "string").slice(0, 4)
     : ["Fale com o Axis", "Conte sua necessidade", "Conheça a estrutura e as condições", "Inicie seu credenciamento"];
+  const experienceItems = getSectionItems(experience?.content, [
+    {
+      title: "Antes do procedimento",
+      description: "Espaços que podem receber consultas pré-operatórias, avaliações anestésicas e outros atendimentos relacionados ao procedimento.",
+    },
+    {
+      title: "Após o procedimento",
+      description: "Uma sala de recuperação cuidadosamente monitorizada, com a assistência necessária para uma recuperação segura e confortável.",
+    },
+  ]);
   const safeMapsEmbed = getSafeGoogleMapsEmbed(settings.maps_embed);
   const jsonLd = {
     "@context": "https://schema.org",
@@ -82,7 +105,7 @@ export default async function Home() {
             <div className="max-w-5xl">
               <p className="eyebrow mb-6 text-white/70">{hero?.eyebrow || "Day Hospital · São Paulo"}</p>
               <h1 className="text-display balance max-w-4xl">{hero?.title || <>Sua cirurgia.<br />Nossa estrutura.</>}</h1>
-              <p className="mt-7 max-w-2xl text-base leading-7 text-white/75 md:text-lg">{hero?.description || "Um Day Hospital pensado para oferecer segurança, tecnologia e praticidade ao médico e aos seus pacientes."}</p>
+              <p className="mt-7 max-w-2xl text-base leading-7 text-white/75 md:text-lg">{hero?.description || "Um Day Hospital para procedimentos de curta permanência, onde tecnologia, acolhimento e segurança caminham juntos."}</p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <Button href={hero?.cta_url || "#o-axis"} variant="light">{hero?.cta_label || "Conheça o Axis"}</Button>
                 <Button href="#contato" variant="outline">Falar com nossa equipe <ArrowRight size={16} /></Button>
@@ -98,8 +121,8 @@ export default async function Home() {
               <div className="grid gap-14 lg:grid-cols-[.75fr_1.25fr]">
                 <Eyebrow>{positioning?.eyebrow || "Axis Day Hospital"}</Eyebrow>
                 <div>
-                  <h2 className="text-section balance text-navy">{positioning?.title || "Estrutura para quem leva cada cirurgia a sério."}</h2>
-                  <p className="mt-8 max-w-3xl text-lg leading-8 text-ink/70">{positioning?.description || "Um hospital especializado em procedimentos invasivos de curta permanência, que une segurança, tecnologia, excelência assistencial e atendimento humanizado, proporcionando uma experiência diferenciada ao paciente e à equipe médica."}</p>
+                  <h2 className="text-section balance text-navy">{positioning?.title || "O cuidado começa antes da cirurgia."}</h2>
+                  <p className="mt-8 max-w-3xl text-lg leading-8 text-ink/70">{positioning?.description || "O Axis é especializado em procedimentos invasivos de curta permanência. Cada ambiente foi planejado para oferecer conforto aos pacientes e praticidade às equipes médicas, favorecendo um atendimento organizado, eficiente e humanizado."}</p>
                 </div>
               </div>
             </Reveal>
@@ -121,16 +144,15 @@ export default async function Home() {
             <div className="flex items-center px-6 py-20 sm:px-12 lg:px-[7vw]">
               <Reveal>
                 <Eyebrow>{experience?.eyebrow || "Experiência Axis"}</Eyebrow>
-                <h2 className="mt-6 text-section balance text-navy">{experience?.title || "Cuidado para quem realiza e para quem recebe cada procedimento."}</h2>
+                <h2 className="mt-6 text-section balance text-navy">{experience?.title || "Uma jornada preparada em cada etapa."}</h2>
+                <p className="mt-6 max-w-xl leading-7 text-ink/65">{experience?.description || "Para pacientes que necessitam de procedimentos cirúrgicos de curta permanência e para médicos que buscam uma estrutura moderna, segura e organizada para realizá-los."}</p>
                 <div className="mt-10 divide-y hairline">
-                  <div className="py-6 first:pt-0">
-                    <h3 className="font-editorial text-3xl text-navy">Para quem é o Axis Day?</h3>
-                    <p className="mt-3 leading-7 text-ink/65">Para pacientes que necessitam de procedimentos cirúrgicos de curta permanência e para médicos que buscam uma estrutura moderna, segura e organizada para realizar seus procedimentos.</p>
-                  </div>
-                  <div className="py-6">
-                    <h3 className="font-editorial text-3xl text-navy">Atendimento humanizado</h3>
-                    <p className="mt-3 leading-7 text-ink/65">Uma experiência próxima e personalizada para médicos, equipes e pacientes, com acolhimento e organização em cada contato.</p>
-                  </div>
+                  {experienceItems.map((item) => (
+                    <div key={item.title} className="py-6 first:pt-0">
+                      <h3 className="font-editorial text-3xl text-navy">{item.title}</h3>
+                      <p className="mt-3 leading-7 text-ink/65">{item.description}</p>
+                    </div>
+                  ))}
                 </div>
               </Reveal>
             </div>
@@ -143,9 +165,9 @@ export default async function Home() {
             <div className="flex items-center px-6 py-20 sm:px-12 lg:px-[8vw]">
               <div>
                 <p className="eyebrow text-white/60">{physicians?.eyebrow || "De médico para médico"}</p>
-                <h2 className="mt-6 text-section balance">{physicians?.title || "Você cuida da cirurgia. O Axis cuida da estrutura."}</h2>
-                <p className="mt-7 font-editorial text-3xl text-white/95">Aqui, você é protagonista.</p>
-                <p className="mt-5 max-w-xl leading-7 text-white/70">{physicians?.description || "O Axis recebe médicos que buscam uma estrutura moderna, segura e organizada, com suporte à equipe médica e uma experiência de atendimento humanizada para seus pacientes."}</p>
+                <h2 className="mt-6 text-section balance">{physicians?.title || "Prontos para cuidar do seu paciente junto com você."}</h2>
+                <p className="mt-7 font-editorial text-3xl text-white/95">Sua equipe encontra um ambiente preparado.</p>
+                <p className="mt-5 max-w-xl leading-7 text-white/70">{physicians?.description || "O Axis recebe médicos e suas equipes em uma estrutura organizada para apoiar o procedimento, com espaços planejados para o cuidado e o atendimento aos pacientes."}</p>
                 <Button href={physicians?.cta_url || "#contato"} variant="light" className="mt-9">{physicians?.cta_label || "Fale conosco e faça seu credenciamento"}</Button>
               </div>
             </div>
@@ -156,7 +178,7 @@ export default async function Home() {
           <Container>
             <div className="grid gap-10 lg:grid-cols-2">
               <div><Eyebrow>{process?.eyebrow || "Como funciona"}</Eyebrow><h2 className="mt-6 text-section text-navy">{process?.title || "Uma conversa clara, do primeiro contato à organização."}</h2></div>
-              <p className="max-w-xl self-end text-sm leading-7 text-ink/60">{process?.description || "Um atendimento próximo e personalizado para entender o seu procedimento, apresentar a estrutura e orientar os primeiros passos do credenciamento."}</p>
+              <p className="max-w-xl self-end text-sm leading-7 text-ink/60">{process?.description || "Nossa equipe entende a necessidade do médico, apresenta a estrutura e as condições e orienta os primeiros passos do credenciamento."}</p>
             </div>
             <ol className="mt-16 grid md:grid-cols-2 lg:grid-cols-4">
               {processSteps.map((step, index) => <li key={step} className="border-t hairline py-8 pr-8"><span className="eyebrow text-metal">0{index + 1}</span><h3 className="mt-10 font-editorial text-3xl text-navy">{step}</h3></li>)}
@@ -167,8 +189,8 @@ export default async function Home() {
         <section id="estrutura" className="section-pad bg-off-white">
           <Container>
             <div className="mb-14 grid gap-8 md:grid-cols-2">
-              <div><Eyebrow>Conheça o Axis</Eyebrow><h2 className="mt-6 text-section text-navy">Estrutura pensada nos detalhes.</h2></div>
-              <p className="max-w-lg self-end text-sm leading-7 text-ink/60">Fotografias reais fornecidas pelo Axis. A galeria é preparada para categorias, ordenação, substituição e publicação pelo painel administrativo.</p>
+              <div><Eyebrow>{structure?.eyebrow || "Conheça o Axis"}</Eyebrow><h2 className="mt-6 text-section text-navy">{structure?.title || "Estrutura pensada nos detalhes."}</h2></div>
+              <p className="max-w-lg self-end text-sm leading-7 text-ink/60">{structure?.description || "Ambientes e salas cirúrgicas preparados com infraestrutura e equipamentos para integrar segurança, tecnologia e acolhimento durante a experiência de médicos, equipes e pacientes."}</p>
             </div>
             <Gallery items={gallery} />
           </Container>
@@ -179,8 +201,8 @@ export default async function Home() {
             <div className="grid items-center gap-12 lg:grid-cols-[.9fr_1.1fr]">
               <Reveal>
                 <Eyebrow>{education?.eyebrow || "Educação e atualização"}</Eyebrow>
-                <h2 className="mt-6 text-section balance text-navy">{education?.title || "Conhecimento que também circula."}</h2>
-                <p className="mt-7 max-w-xl text-lg leading-8 text-ink/68">{education?.description || "O Axis possibilita a realização de aulas, treinamentos e cursos com transmissão de cirurgias ao vivo, promovendo educação, atualização profissional e troca de conhecimento."}</p>
+                <h2 className="mt-6 text-section balance text-navy">{education?.title || "Tecnologia a serviço do cuidado e do ensino."}</h2>
+                <p className="mt-7 max-w-xl text-lg leading-8 text-ink/68">{education?.description || "Uma câmera 4K integrada ao foco cirúrgico permite filmar e transmitir procedimentos ao vivo em alta definição. O recurso amplia as possibilidades de aulas, treinamentos e cursos para atualização profissional e troca de conhecimento."}</p>
               </Reveal>
               <div className="relative min-h-[30rem] overflow-hidden bg-navy"><Image src="/images/RCZ_2222.jpg" alt="Ambiente cirúrgico do Axis Day Hospital preparado para atividades de educação médica" fill sizes="(min-width:1024px) 55vw,100vw" className="object-cover" /></div>
             </div>
@@ -193,8 +215,8 @@ export default async function Home() {
           <Container className="relative flex min-h-[70svh] items-center">
             <div className="max-w-4xl">
               <p className="eyebrow text-white/60">{editorialCta?.eyebrow || "Próximo passo"}</p>
-              <h2 className="mt-6 text-display balance">{editorialCta?.title || "Seu próximo procedimento pode começar aqui."}</h2>
-              <p className="mt-7 max-w-xl text-lg leading-8 text-white/70">{editorialCta?.description || "Fale com nossa equipe para conhecer a estrutura, entender as condições e iniciar seu credenciamento."}</p>
+              <h2 className="mt-6 text-display balance">{editorialCta?.title || "Tecnologia que inspira confiança. Cuidado que faz a diferença."}</h2>
+              <p className="mt-7 max-w-xl text-lg leading-8 text-white/70">{editorialCta?.description || "Conheça uma estrutura preparada para receber você, sua equipe e seus pacientes — antes, durante e após o procedimento."}</p>
               <Button href={editorialCta?.cta_url || "#contato"} variant="light" className="mt-9">{editorialCta?.cta_label || "Fale conosco e faça seu credenciamento"}</Button>
             </div>
           </Container>
