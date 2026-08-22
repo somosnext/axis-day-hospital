@@ -9,6 +9,7 @@ import { Header } from "@/components/layout/header";
 import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import { CookieBanner } from "@/components/privacy/cookie-banner";
 import { Gallery } from "@/components/sections/gallery";
+import { HeroVideo } from "@/components/sections/hero-video";
 import { Button } from "@/components/ui/button";
 import { Container, Eyebrow } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/reveal";
@@ -75,19 +76,7 @@ export default async function Home() {
       <main>
         <section id="inicio" className="relative min-h-[94svh] overflow-hidden bg-navy-950 text-white">
           <Image src="/images/RCZ_2199-HDR.jpg" alt="Ambiente cirúrgico do Axis Day Hospital" fill priority loading="eager" sizes="100vw" className="object-cover object-center" />
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            poster="/images/RCZ_2199-HDR.jpg"
-            aria-hidden="true"
-            tabIndex={-1}
-            className="absolute inset-0 z-[1] h-full w-full object-cover object-center motion-reduce:hidden"
-          >
-            <source src="/videos/axis-day.mp4" type="video/mp4" />
-          </video>
+          <HeroVideo />
           <div className="absolute inset-0 z-[2] bg-[linear-gradient(90deg,rgba(7,29,44,.94)_0%,rgba(7,29,44,.68)_48%,rgba(7,29,44,.18)_100%)]" />
           <Container className="relative z-[3] flex min-h-[94svh] items-end pb-20 pt-36 md:items-center md:pb-0">
             <div className="max-w-5xl">
