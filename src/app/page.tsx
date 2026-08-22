@@ -97,22 +97,20 @@ export default async function Home() {
     <>
       <Header />
       <main>
-        <section id="inicio" className="relative min-h-[94svh] overflow-hidden bg-navy-950 text-white">
-          <Image src="/images/RCZ_2199-HDR.jpg" alt="Ambiente cirúrgico do Axis Day Hospital" fill priority loading="eager" sizes="100vw" className="object-cover object-center" />
-          <HeroVideo />
-          <div className="absolute inset-0 z-[2] bg-[linear-gradient(90deg,rgba(7,29,44,.94)_0%,rgba(7,29,44,.68)_48%,rgba(7,29,44,.18)_100%)]" />
-          <Container className="relative z-[3] flex min-h-[94svh] items-end pb-20 pt-36 md:items-center md:pb-0">
-            <div className="max-w-5xl">
+        <section id="inicio" className="relative overflow-hidden bg-navy-950 text-white">
+          <Container className="grid min-h-[94svh] items-center gap-10 pb-16 pt-32 lg:grid-cols-[.78fr_1.22fr] lg:gap-14 lg:pb-20 lg:pt-32 xl:gap-20">
+            <div className="order-2 max-w-2xl lg:order-1">
               <p className="eyebrow mb-6 text-white/70">{hero?.eyebrow || "Day Hospital · São Paulo"}</p>
-              <h1 className="text-display balance max-w-4xl">{hero?.title || <>Sua cirurgia.<br />Nossa estrutura.</>}</h1>
+              <h1 className="text-display balance">{hero?.title || <>Sua cirurgia.<br />Nossa estrutura.</>}</h1>
               <p className="mt-7 max-w-2xl text-base leading-7 text-white/75 md:text-lg">{hero?.description || "Um Day Hospital para procedimentos de curta permanência, onde tecnologia, acolhimento e segurança caminham juntos."}</p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <Button href={hero?.cta_url || "#o-axis"} variant="light">{hero?.cta_label || "Conheça o Axis"}</Button>
                 <Button href="#contato" variant="outline">Falar com nossa equipe <ArrowRight size={16} /></Button>
               </div>
             </div>
+            <HeroVideo />
           </Container>
-          <a href="#o-axis" className="absolute bottom-6 right-6 z-[3] hidden items-center gap-3 text-[10px] uppercase tracking-[.2em] text-white/55 md:flex">Explore <ArrowDown size={16} /></a>
+          <a href="#o-axis" className="absolute bottom-6 right-6 hidden items-center gap-3 text-[10px] uppercase tracking-[.2em] text-white/55 lg:flex">Explore <ArrowDown size={16} /></a>
         </section>
 
         <section id="o-axis" className="section-pad">
