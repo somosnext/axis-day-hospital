@@ -75,8 +75,21 @@ export default async function Home() {
       <main>
         <section id="inicio" className="relative min-h-[94svh] overflow-hidden bg-navy-950 text-white">
           <Image src="/images/RCZ_2199-HDR.jpg" alt="Ambiente cirúrgico do Axis Day Hospital" fill priority loading="eager" sizes="100vw" className="object-cover object-center" />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,29,44,.94)_0%,rgba(7,29,44,.68)_48%,rgba(7,29,44,.18)_100%)]" />
-          <Container className="relative flex min-h-[94svh] items-end pb-20 pt-36 md:items-center md:pb-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            poster="/images/RCZ_2199-HDR.jpg"
+            aria-hidden="true"
+            tabIndex={-1}
+            className="absolute inset-0 z-[1] h-full w-full object-cover object-center motion-reduce:hidden"
+          >
+            <source src="/videos/axis-day.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 z-[2] bg-[linear-gradient(90deg,rgba(7,29,44,.94)_0%,rgba(7,29,44,.68)_48%,rgba(7,29,44,.18)_100%)]" />
+          <Container className="relative z-[3] flex min-h-[94svh] items-end pb-20 pt-36 md:items-center md:pb-0">
             <div className="max-w-5xl">
               <p className="eyebrow mb-6 text-white/70">{hero?.eyebrow || "Day Hospital · São Paulo"}</p>
               <h1 className="text-display balance max-w-4xl">{hero?.title || <>Sua cirurgia.<br />Nossa estrutura.</>}</h1>
@@ -87,7 +100,7 @@ export default async function Home() {
               </div>
             </div>
           </Container>
-          <a href="#o-axis" className="absolute bottom-6 right-6 hidden items-center gap-3 text-[10px] uppercase tracking-[.2em] text-white/55 md:flex">Explore <ArrowDown size={16} /></a>
+          <a href="#o-axis" className="absolute bottom-6 right-6 z-[3] hidden items-center gap-3 text-[10px] uppercase tracking-[.2em] text-white/55 md:flex">Explore <ArrowDown size={16} /></a>
         </section>
 
         <section id="o-axis" className="section-pad">
