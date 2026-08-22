@@ -97,9 +97,11 @@ export default async function Home() {
     <>
       <Header />
       <main>
-        <section id="inicio" className="relative overflow-hidden bg-navy-950 text-white">
-          <Container className="grid min-h-[94svh] items-center gap-10 pb-16 pt-32 lg:grid-cols-[.78fr_1.22fr] lg:gap-14 lg:pb-20 lg:pt-32 xl:gap-20">
-            <div className="order-2 max-w-2xl lg:order-1">
+        <section id="inicio" className="relative min-h-[100svh] overflow-hidden bg-navy-950 text-white">
+          <HeroVideo />
+          <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(3,24,43,.92)_0%,rgba(3,24,43,.72)_42%,rgba(3,24,43,.18)_78%,rgba(3,24,43,.08)_100%)] max-lg:bg-[linear-gradient(180deg,rgba(3,24,43,.48)_0%,rgba(3,24,43,.78)_58%,rgba(3,24,43,.94)_100%)]" />
+          <Container className="relative z-10 flex min-h-[100svh] items-center pb-24 pt-32">
+            <div className="max-w-2xl">
               <p className="eyebrow mb-6 text-white/70">{hero?.eyebrow || "Day Hospital · São Paulo"}</p>
               <h1 className="text-display balance">{hero?.title || <>Sua cirurgia.<br />Nossa estrutura.</>}</h1>
               <p className="mt-7 max-w-2xl text-base leading-7 text-white/75 md:text-lg">{hero?.description || "Um Day Hospital para procedimentos de curta permanência, onde tecnologia, acolhimento e segurança caminham juntos."}</p>
@@ -108,9 +110,8 @@ export default async function Home() {
                 <Button href="#contato" variant="outline">Falar com nossa equipe <ArrowRight size={16} /></Button>
               </div>
             </div>
-            <HeroVideo />
           </Container>
-          <a href="#o-axis" className="absolute bottom-6 right-6 hidden items-center gap-3 text-[10px] uppercase tracking-[.2em] text-white/55 lg:flex">Explore <ArrowDown size={16} /></a>
+          <a href="#o-axis" className="absolute bottom-6 left-6 z-20 hidden items-center gap-3 text-[10px] uppercase tracking-[.2em] text-white/70 lg:flex">Explore <ArrowDown size={16} /></a>
         </section>
 
         <section id="o-axis" className="section-pad">
