@@ -27,8 +27,10 @@ export function Button({
     className,
   );
 
+  const external = href?.startsWith("http");
+
   return href ? (
-    <Link href={href} className={styles}>
+    <Link href={href} className={styles} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
       {children}
     </Link>
   ) : (

@@ -1,5 +1,5 @@
-insert into public.site_settings(business_name,slogan,address,opening_hours,whatsapp_message,seo_title,seo_description)
-select 'Axis Day Hospital','Sua cirurgia. Nossa estrutura.','Avenida Rubem Berta, 850 — Conjunto 1404 — Indianápolis — São Paulo/SP','Segunda a sexta-feira, das 07:00 às 19:00','Olá. Sou médico(a) e gostaria de conhecer as condições para realizar procedimentos no Axis Day Hospital.','Axis Day Hospital | Estrutura moderna para médicos em São Paulo','Hospital para procedimentos invasivos de curta permanência em São Paulo, com estrutura moderna para pacientes, médicos e equipes.'
+insert into public.site_settings(business_name,slogan,address,opening_hours,whatsapp,whatsapp_message,seo_title,seo_description)
+select 'Axis Day Hospital','Sua cirurgia. Nossa estrutura.','Avenida Rubem Berta, 850 — Conjunto 1704 — Indianápolis — São Paulo/SP','Segunda a sexta-feira, das 07:00 às 19:00','11945683663','Olá. Gostaria de conhecer o Axis Day Hospital e saber mais sobre o credenciamento.','Axis Day Hospital | Estrutura moderna para médicos em São Paulo','Hospital para procedimentos invasivos de curta permanência em São Paulo, com estrutura moderna para pacientes, médicos e equipes.'
 where not exists(select 1 from public.site_settings);
 
 insert into public.page_sections(section_key,eyebrow,title,description,cta_label,cta_url,active,sort_order,content) values

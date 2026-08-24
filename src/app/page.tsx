@@ -62,8 +62,10 @@ export default async function Home() {
   const education = sections.education;
   const structure = sections.structure;
   const editorialCta = sections.editorial_cta;
-  const whatsapp = settings.whatsapp
-    ? `https://wa.me/${settings.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(settings.whatsapp_message || "Olá. Sou médico(a) e gostaria de conhecer as condições para realizar procedimentos no Axis Day Hospital.")}`
+  const whatsappDigits = settings.whatsapp?.replace(/\D/g, "") || "";
+  const whatsappNumber = whatsappDigits.startsWith("55") ? whatsappDigits : `55${whatsappDigits}`;
+  const whatsapp = whatsappDigits
+    ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(settings.whatsapp_message || "Olá. Gostaria de conhecer o Axis Day Hospital e saber mais sobre o credenciamento.")}`
     : null;
   const processSteps = Array.isArray(process?.content?.steps)
     ? process.content.steps.filter((step): step is string => typeof step === "string").slice(0, 4)
@@ -85,7 +87,7 @@ export default async function Home() {
     name: settings.business_name,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Avenida Rubem Berta, 850 — Conjunto 1404",
+      streetAddress: "Avenida Rubem Berta, 850 — Conjunto 1704",
       addressLocality: "São Paulo",
       addressRegion: "SP",
       addressCountry: "BR",
@@ -95,7 +97,7 @@ export default async function Home() {
 
   return (
     <>
-      <Header />
+      <Header whatsappHref={whatsapp} />
       <main>
         <section id="inicio" className="relative overflow-hidden bg-navy-950 text-white">
           <Container className="grid min-h-[94svh] items-center gap-10 pb-16 pt-32 lg:grid-cols-[.78fr_1.22fr] lg:gap-14 lg:pb-20 lg:pt-32 xl:gap-20">
@@ -105,7 +107,7 @@ export default async function Home() {
               <p className="mt-7 max-w-2xl text-base leading-7 text-white/75 md:text-lg">{hero?.description || "Um Day Hospital para procedimentos de curta permanência, onde tecnologia, acolhimento e segurança caminham juntos."}</p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <Button href={hero?.cta_url || "#o-axis"} variant="light">{hero?.cta_label || "Conheça o Axis"}</Button>
-                <Button href="#contato" variant="outline">Falar com nossa equipe <ArrowRight size={16} /></Button>
+                <Button href={whatsapp || "#contato"} variant="outline">Falar com nossa equipe <ArrowRight size={16} /></Button>
               </div>
             </div>
             <HeroVideo />
@@ -166,7 +168,7 @@ export default async function Home() {
                 <h2 className="mt-6 text-section balance">{physicians?.title || "Prontos para cuidar do seu paciente junto com você."}</h2>
                 <p className="mt-7 font-editorial text-3xl text-white/95">Sua equipe encontra um ambiente preparado.</p>
                 <p className="mt-5 max-w-xl leading-7 text-white/70">{physicians?.description || "O Axis recebe médicos e suas equipes em uma estrutura organizada para apoiar o procedimento, com espaços planejados para o cuidado e o atendimento aos pacientes."}</p>
-                <Button href={physicians?.cta_url || "#contato"} variant="light" className="mt-9">{physicians?.cta_label || "Fale conosco e faça seu credenciamento"}</Button>
+                <Button href={whatsapp || physicians?.cta_url || "#contato"} variant="light" className="mt-9">{physicians?.cta_label || "Fale conosco e faça seu credenciamento"}</Button>
               </div>
             </div>
           </div>
@@ -215,7 +217,7 @@ export default async function Home() {
               <p className="eyebrow text-white/60">{editorialCta?.eyebrow || "Próximo passo"}</p>
               <h2 className="mt-6 text-display balance">{editorialCta?.title || "Tecnologia que inspira confiança. Cuidado que faz a diferença."}</h2>
               <p className="mt-7 max-w-xl text-lg leading-8 text-white/70">{editorialCta?.description || "Conheça uma estrutura preparada para receber você, sua equipe e seus pacientes — antes, durante e após o procedimento."}</p>
-              <Button href={editorialCta?.cta_url || "#contato"} variant="light" className="mt-9">{editorialCta?.cta_label || "Fale conosco e faça seu credenciamento"}</Button>
+              <Button href={whatsapp || editorialCta?.cta_url || "#contato"} variant="light" className="mt-9">{editorialCta?.cta_label || "Fale conosco e faça seu credenciamento"}</Button>
             </div>
           </Container>
         </section>
