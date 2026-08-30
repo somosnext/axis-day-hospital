@@ -2,6 +2,8 @@
 
 Aplicação full stack institucional e comercial voltada a médicos externos que desejam conhecer as condições para realizar cirurgias eletivas no Axis Day Hospital. O projeto reúne site público, captação real de leads, autenticação, CRM, CMS, galeria, storage, analytics condicionado ao consentimento, SEO e páginas LGPD.
 
+Headline institucional vigente no hero: **O seu hospital dia**.
+
 Nenhum telefone, e-mail, perfil social, credencial, certificação ou dado clínico não confirmado foi preenchido. Campos ausentes permanecem configuráveis no painel.
 
 ## Stack

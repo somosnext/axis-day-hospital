@@ -103,7 +103,7 @@ export default async function Home() {
           <Container className="grid min-h-[94svh] items-center gap-10 pb-16 pt-32 lg:grid-cols-[.78fr_1.22fr] lg:gap-14 lg:pb-20 lg:pt-32 xl:gap-20">
             <div className="order-2 max-w-2xl lg:order-1">
               <p className="eyebrow mb-6 text-white/70">{hero?.eyebrow || "Day Hospital · São Paulo"}</p>
-              <h1 className="text-display balance">{hero?.title || <>Sua cirurgia.<br />Nossa estrutura.</>}</h1>
+              <h1 className="text-display balance">{hero?.title || "O seu hospital dia"}</h1>
               <p className="mt-7 max-w-2xl text-base leading-7 text-white/75 md:text-lg">{hero?.description || "Um Day Hospital para procedimentos de curta permanência, onde tecnologia, acolhimento e segurança caminham juntos."}</p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <Button href={hero?.cta_url || "#o-axis"} variant="light">{hero?.cta_label || "Conheça o Axis"}</Button>
