@@ -7,4 +7,4 @@ Atualizado em 30/08/2026.
 - Hero com vídeo lateral, reprodução automática sem som e controle para ouvir.
 - Headline principal atualizada para “O seu hospital dia”.
 - Endereço e WhatsApp confirmados aplicados.
-- Alteração pendente apenas do ciclo automático de deploy após o push, quando aplicável.
+- Deploy público confirmado em https://axis-day-hospital.vercel.app/.
