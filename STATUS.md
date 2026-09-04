@@ -10,3 +10,4 @@ Atualizado em 04/09/2026.
 - Nova seção “Equipamentos” adicionada ao site, com duas imagens fornecidas e descrições editoriais de nove aparelhos.
 - A seção sinaliza que disponibilidade, indicação e suporte devem ser confirmados com a equipe Axis.
 - Deploy público confirmado em https://axis-day-hospital.vercel.app/.
+- Projeto completo copiado para a pasta padrão da Mesa, pronto para continuidade em outra conta do Codex.
