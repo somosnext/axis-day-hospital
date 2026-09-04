@@ -1,5 +1,10 @@
 # Changelog
 
+## 04/09/2026
+
+- Projeto e contexto organizados em `/Users/jonathanrodrigues/Desktop/Descarte/PROJETOS/axis-day-hospital` para continuidade em outra conta do Codex.
+- Mantidos histórico Git, código, imagens, vídeo e documentação; arquivos privados e caches locais não foram copiados.
+
 ## 30/08/2026
 
 - Substituída a headline “Sua cirurgia. Nossa estrutura.” por “O seu hospital dia”.

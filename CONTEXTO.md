@@ -4,6 +4,7 @@ O Axis Day Hospital é apresentado como uma estrutura voltada principalmente a m
 
 ## Produção
 
+- Pasta local de continuidade: `/Users/jonathanrodrigues/Desktop/Descarte/PROJETOS/axis-day-hospital`
 - Site: https://axis-day-hospital.vercel.app/
 - Repositório: https://github.com/somosnext/axis-day-hospital
 - Endereço confirmado: Avenida Rubem Berta, 850 — Conjunto 1704 — Indianápolis — São Paulo/SP
@@ -11,3 +12,5 @@ O Axis Day Hospital é apresentado como uma estrutura voltada principalmente a m
 - Headline vigente: O seu hospital dia
 
 Informações médicas, regulatórias e comerciais não confirmadas não devem ser inventadas.
+
+Ao continuar o trabalho em outra conta ou sessão do Codex, abrir esta pasta e ler, antes de qualquer alteração: `README.md`, `CONTEXTO.md`, `STATUS.md`, `CHANGELOG.md` e `TODO.md`.
