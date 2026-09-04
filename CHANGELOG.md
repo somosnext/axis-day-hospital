@@ -1,5 +1,11 @@
 # Changelog
 
+## 04/09/2026
+
+- Adicionada a seção pública “Equipamentos” com as imagens fornecidas e informações organizadas sobre Rhosse, Retraction, Argoplasma, Renuvion, Vaser, BodyTite, Laser CO₂, Piezo e Vibrolipo.
+- Incluído “Equipamentos” na navegação principal e no menu mobile.
+- Acrescentado aviso para confirmar disponibilidade, indicação, condições de uso e suporte técnico com a equipe Axis.
+
 ## 30/08/2026
 
 - Substituída a headline “Sua cirurgia. Nossa estrutura.” por “O seu hospital dia”.

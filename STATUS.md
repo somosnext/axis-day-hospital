@@ -1,10 +1,12 @@
 # Status
 
-Atualizado em 30/08/2026.
+Atualizado em 04/09/2026.
 
 - Site público e painel administrativo implementados.
 - Deploy de produção conectado ao repositório GitHub.
 - Hero com vídeo lateral, reprodução automática sem som e controle para ouvir.
 - Headline principal atualizada para “O seu hospital dia”.
 - Endereço e WhatsApp confirmados aplicados.
+- Nova seção “Equipamentos” adicionada ao site, com duas imagens fornecidas e descrições editoriais de nove aparelhos.
+- A seção sinaliza que disponibilidade, indicação e suporte devem ser confirmados com a equipe Axis.
 - Deploy público confirmado em https://axis-day-hospital.vercel.app/.

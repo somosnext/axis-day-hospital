@@ -9,11 +9,13 @@ import { Header } from "@/components/layout/header";
 import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import { CookieBanner } from "@/components/privacy/cookie-banner";
 import { Gallery } from "@/components/sections/gallery";
+import { EquipmentShowcase } from "@/components/sections/equipment-showcase";
 import { HeroVideo } from "@/components/sections/hero-video";
 import { Button } from "@/components/ui/button";
 import { Container, Eyebrow } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/reveal";
 import { getPublicData } from "@/lib/data";
+import { equipmentSeed } from "@/config/site";
 
 export const revalidate = 60;
 
@@ -195,6 +197,8 @@ export default async function Home() {
             <Gallery items={gallery} />
           </Container>
         </section>
+
+        <EquipmentShowcase items={equipmentSeed} />
 
         <section className="section-pad bg-white">
           <Container>

@@ -4,6 +4,8 @@ Aplicação full stack institucional e comercial voltada a médicos externos que
 
 Headline institucional vigente no hero: **O seu hospital dia**.
 
+A página pública também inclui a seção **Equipamentos**, com imagens fornecidas pelo cliente e descrições editoriais de nove aparelhos. Disponibilidade, indicação e suporte devem ser confirmados com a equipe Axis.
+
 Nenhum telefone, e-mail, perfil social, credencial, certificação ou dado clínico não confirmado foi preenchido. Campos ausentes permanecem configuráveis no painel.
 
 ## Stack
