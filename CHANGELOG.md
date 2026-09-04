@@ -2,9 +2,13 @@
 
 ## 04/09/2026
 
-- Adicionada a seção pública “Equipamentos” com as imagens fornecidas e informações organizadas sobre Rhosse, Retraction, Argoplasma, Renuvion, Vaser, BodyTite, Laser CO₂, Piezo e Vibrolipo.
+- Adicionada a seção pública “Equipamentos” com uma imagem representativa individual e informações organizadas sobre Rhosse, Retraction, Argoplasma, Renuvion, Vaser, BodyTite, Laser CO₂, Piezo e Vibrolipo.
 - Incluído “Equipamentos” na navegação principal e no menu mobile.
 - Acrescentado aviso para confirmar disponibilidade, indicação, condições de uso e suporte técnico com a equipe Axis.
+
+## 04/09/2026 — revisão visual
+
+- Removidas as duas fotos de folhetos enviadas anteriormente; a seção passou a usar imagens individuais por aparelho, com fonte identificada.
 
 ## 30/08/2026
 

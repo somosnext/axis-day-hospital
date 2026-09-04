@@ -12,8 +12,8 @@ O Axis Day Hospital é apresentado como uma estrutura voltada principalmente a m
 
 ## Equipamentos
 
-- A seção pública usa duas imagens de materiais fornecidos pelo cliente (`public/images/equipamentos-axis-01.jpg` e `public/images/equipamentos-axis-02.jpg`).
-- As descrições foram redigidas a partir do texto visível nessas imagens, sem adicionar números, certificações ou promessas não confirmadas.
+- A seção pública usa uma imagem representativa individual para cada equipamento, carregada de páginas públicas de fabricantes, clínicas ou distribuidores e identificada na própria interface.
+- As descrições foram redigidas a partir do material fornecido e de referências públicas, sem adicionar números, certificações ou promessas não confirmadas.
 - A disponibilidade, indicação, condições de uso e suporte técnico dos aparelhos precisam ser confirmados com a equipe Axis antes da publicação de informações comerciais definitivas.
 
 Informações médicas, regulatórias e comerciais não confirmadas não devem ser inventadas.
