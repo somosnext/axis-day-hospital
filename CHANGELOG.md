@@ -1,5 +1,10 @@
 # Changelog
 
+## 08/09/2026
+
+- Removido o equipamento Retraction, que não faz parte da estrutura informada.
+- Corrigida a associação visual do VASER e adicionada a Torre de Videocirurgia Stryker 1688 AIM 4K com imagem fornecida pelo cliente e descrição de locação.
+
 ## 04/09/2026
 
 - Adicionada a seção pública “Equipamentos” com uma imagem representativa individual e informações organizadas sobre Rhosse, Retraction, Argoplasma, Renuvion, Vaser, BodyTite, Laser CO₂, Piezo e Vibrolipo.
