@@ -1,5 +1,9 @@
 # Changelog
 
+## 08/09/2026 — Retraction
+
+- Reintroduzido o equipamento Retraction com imagem pública de melhor qualidade e descrição sobre radiofrequência, retração da pele e emulsificação da gordura.
+
 ## 08/09/2026
 
 - Removido o equipamento Retraction, que não faz parte da estrutura informada.
