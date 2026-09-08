@@ -3,6 +3,7 @@
 ## 08/09/2026 — Retraction
 
 - Reintroduzido o equipamento Retraction com imagem pública de melhor qualidade e descrição sobre radiofrequência, retração da pele e emulsificação da gordura.
+- Substituída a imagem pública por arquivo fornecido pelo cliente, removendo a marca de terceiro do material visual.
 
 ## 08/09/2026
 

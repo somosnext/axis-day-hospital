@@ -14,7 +14,7 @@ O Axis Day Hospital é apresentado como uma estrutura voltada principalmente a m
 ## Equipamentos
 
 - A seção pública usa uma imagem representativa individual para cada equipamento, carregada de páginas públicas de fabricantes, clínicas ou distribuidores e identificada na própria interface.
-- O Retraction foi reinserido com imagem pública própria. O VASER utiliza sua própria imagem e a Torre de Videocirurgia Stryker 1688 AIM 4K utiliza o arquivo local `public/images/torre-videocirurgia-stryker-1688-aim-4k.jpg`, fornecido pelo cliente.
+- O Retraction usa o arquivo local `public/images/retraction.webp`, fornecido pelo cliente, sem a marca de terceiro que aparecia na imagem pública anterior. O VASER utiliza sua própria imagem e a Torre de Videocirurgia Stryker 1688 AIM 4K utiliza o arquivo local `public/images/torre-videocirurgia-stryker-1688-aim-4k.jpg`.
 - As descrições foram redigidas a partir do material fornecido e de referências públicas, sem adicionar números, certificações ou promessas não confirmadas.
 - A disponibilidade, indicação, condições de uso e suporte técnico dos aparelhos precisam ser confirmados com a equipe Axis antes da publicação de informações comerciais definitivas.
 
